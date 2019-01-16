@@ -3,7 +3,9 @@ package en.just.dao.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -14,8 +16,12 @@ import javax.validation.constraints.Size;
 @Table(name = "rooms")
 public class Room {
 
+	private static final String ROOMS_ID_SEQ = "ROOMS_ID_SEQ";
+	private static final String ROOMS_ID_GENERATOR = "ROOMS_ID_GENERATOR";
+
 	@Id
-	@GeneratedValue//(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = ROOMS_ID_GENERATOR)
+	@SequenceGenerator(name = ROOMS_ID_GENERATOR, sequenceName = ROOMS_ID_SEQ)
 	private Long id;
 
 	@Column(name = "roomName", unique = true)

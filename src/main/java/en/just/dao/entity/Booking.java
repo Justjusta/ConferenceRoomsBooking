@@ -2,7 +2,9 @@ package en.just.dao.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
@@ -11,8 +13,12 @@ import java.time.LocalDateTime;
 @Table(name = "bookings")
 public class Booking {
 
+	private static final String BOOKINGS_ID_SEQ = "BOOKINGS_ID_SEQ";
+	private static final String BOOKINGS_ID_GENERATOR = "BOOKINGS_ID_GENERATOR";
+
 	@Id
-	@GeneratedValue//(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = BOOKINGS_ID_GENERATOR)
+	@SequenceGenerator(name = BOOKINGS_ID_GENERATOR, sequenceName = BOOKINGS_ID_SEQ)
 	private Long id;
 
 //	@ManyToOne
