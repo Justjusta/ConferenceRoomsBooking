@@ -1,16 +1,14 @@
-package en.just.controller;
+package en.just.web.controller;
 
+import en.just.web.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import en.just.service.RoomService;
-import lombok.RequiredArgsConstructor;
-
 @RestController
 @RequestMapping("/rooms")
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class RoomController {
 
 	@Autowired

@@ -1,28 +1,18 @@
 package en.just.api.dto;
 
+import en.just.dao.entity.Room;
+import en.just.dao.entity.User;
+
 import java.time.LocalDateTime;
-
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
-
-import en.just.entity.Room;
-import en.just.entity.User;
 
 public class BookingDTO {
 
-	@ManyToOne
-	@JoinColumn(name = "userLogin")
 	private User user;
 
-	@ManyToOne
-	@JoinColumn(name = "roomName")
 	private Room room;
 
-	@NotNull
 	private LocalDateTime dateFrom;
 
-	@NotNull
 	private LocalDateTime dateTo;
 
 	public BookingDTO() {
