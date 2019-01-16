@@ -45,5 +45,14 @@ public class UserDTO {
 		this.password = password;
 	}
 
-
+	@Override
+	public String toString() {
+		final StringBuffer sb = new StringBuffer("UserDTO{");
+		sb.append("name='").append(name).append('\'');
+		sb.append(", surname='").append(surname).append('\'');
+		sb.append(", login='").append(login).append('\'');
+		sb.append(", password='").append(password).append('\'');
+		sb.append('}');
+		return sb.toString();
+	}
 }

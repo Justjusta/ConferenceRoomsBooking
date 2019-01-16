@@ -1,5 +1,7 @@
 package en.just.web.service;
 
+import en.just.api.dto.UserDTO;
+import en.just.api.dto.mapper.GenericMapper;
 import en.just.dao.entity.User;
 import en.just.dao.repository.UserRepository;
 import org.slf4j.Logger;
@@ -15,9 +17,13 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 
-	public User create() {
-		LOGGER.info("creating User");
-		return userRepository.save(new User("Just", "Łuni", "jluni", "0987654321"));
+	@Autowired
+	private GenericMapper<User, UserDTO> userMapper;
+
+	public User create(UserDTO userDTO) {
+		User user = userMapper.fromDto(userDTO);
+		LOGGER.info("creating User: " + user);
+		return userRepository.save(user);
 	}
 
 }
