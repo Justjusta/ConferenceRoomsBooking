@@ -1,6 +1,9 @@
 package en.just.dao.repository;
 
-public interface RoomRepository {// extends JpaRepository<Room, Long> {
+import en.just.dao.entity.Room;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface RoomRepository extends JpaRepository<Room, Long> {
 
 //	User findByName(String name);
 //

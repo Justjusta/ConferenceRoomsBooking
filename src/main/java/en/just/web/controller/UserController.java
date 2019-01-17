@@ -1,15 +1,13 @@
 package en.just.web.controller;
 
 import en.just.api.dto.UserDTO;
+import en.just.dao.entity.User;
 import en.just.web.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/users")
@@ -26,12 +24,17 @@ public class UserController {
         return userService.create(userDTO);
 	}
 
-	/*
-	 * @PutMapping("/edit")
-	 * 
-	 * @GetMapping("/available")
-	 * 
-	 * @DeleteMapping("/delete")
-	 */
+    @PutMapping
+    public User edit(@PathVariable String login, @RequestBody UserDTO userDTO) {
+        LOGGER.info("editing User: {} with login: {}", userDTO, login);
+        return userService.edit(login, userDTO);
+    }
+
+    /*
+
+     * @GetMapping("/available")
+     *
+     * @DeleteMapping("/delete")
+     */
 
 }
