@@ -9,7 +9,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.transaction.Transactional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = TestRepositoryContextConfiguration.class)
@@ -27,6 +27,6 @@ public class UserRepositoryIntegrationTest {
         User savedUser = userRepository.save(user);
 
         User userFromDb = userRepository.findById(savedUser.getId()).get();
-        assertEquals(USER_NAME, userFromDb.getName(), "User name is incorrect");
+        assertEquals("User name is incorrect", USER_NAME, userFromDb.getName());
     }
 }
