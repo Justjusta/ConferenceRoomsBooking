@@ -20,10 +20,12 @@ public class UserService {
 	@Autowired
 	private GenericMapper<User, UserDTO> userMapper;
 
-	public User create(UserDTO userDTO) {
+	public UserDTO create(UserDTO userDTO) {
 		User user = userMapper.fromDto(userDTO);
 		LOGGER.info("creating User: " + user);
-		return userRepository.save(user);
+		User createdUser = userRepository.save(user);
+
+		return userMapper.fromModel(createdUser);
 	}
 
 }
