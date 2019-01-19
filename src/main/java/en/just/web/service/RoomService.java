@@ -27,4 +27,19 @@ public class RoomService {
 		return roomRepository.save(room);
 	}
 
+	public Room edit(String name, RoomDTO roomDTO) {
+		Room foundRoom = roomRepository.findByName(name);
+		if ((roomDTO.getName() != null)) {
+			foundRoom.setName(roomDTO.getName());
+		}
+		if ((roomDTO.getLocation() != null)) {
+			foundRoom.setLocation(roomDTO.getLocation());
+		}
+		if ((roomDTO.getPhone() != null)) {
+			foundRoom.setPhone(roomDTO.getPhone());
+		}
+
+		LOGGER.info("editing Room: " + foundRoom);
+		return roomRepository.save(foundRoom);
+	}
 }

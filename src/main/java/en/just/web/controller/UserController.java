@@ -31,9 +31,6 @@ public class UserController {
     }
 
     /*
-
-     * @GetMapping("/available")
-     *
      * @DeleteMapping("/delete")
      */
 
